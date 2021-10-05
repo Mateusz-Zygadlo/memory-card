@@ -7,17 +7,27 @@
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
 }
 
 .card{
     width: 300px;
     height: 200px;
-    background-color: black;
-    color: white;
     margin: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.cardOne{
+    background-color: aqua;
+}
+.cardTwo{
+    background-color: red;
+}
+.cardThree{
+    background-color: green;
+}
+.cardFour{
+    background-color: yellow;
 }
