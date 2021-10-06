@@ -1,8 +1,8 @@
-import Card from "./Card";
+import BoardGame from "./BoardGame";
 
 const App = () => {
     return(
-        <Card />
+        <BoardGame />
     )
 }
 

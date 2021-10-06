@@ -48,6 +48,30 @@ body{
     background-color: black;
     color: white;
 }
+.cardNine{
+    background-color: aquamarine;
+}
+.cardTen{
+    background-color: coral;
+}
+.cardEleven{
+    background-color: darkslateblue;
+}
+.cardTwelve{
+    background-color: greenyellow;
+}
+.cardThirteen{
+    background-color: magenta;
+}
+.cardFourteen{
+    background-color: midnightblue;
+}
+.cardFifteen{
+    background-color: lightgray;
+}
+.cardSixteen{
+    background-color: sienna;
+}
 .count{
     width: 100vw;
     height: 50px;
@@ -92,6 +116,9 @@ body{
 }
 
 @media only screen and (max-width: 700px) {
+    body{
+        overflow-x: hidden;
+    }
     .container{
         width: 500px;
         grid-template-columns: repeat(3, 1fr);
