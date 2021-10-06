@@ -42,8 +42,6 @@ const Card = () => {
             if(count > maxCount){
                 setMaxCount(count - 1);
             }
-
-
         }else{
             setCount(count + 1);
         }
@@ -63,9 +61,32 @@ const Card = () => {
         return;
     }, [count])
 
+    const setValueInMemoryArr = (value) => {
+        setMemoryArr(memoryArr.concat(value));
+    }
+
+    const resetGame = () => {
+        setCount(-1)
+        setMemoryArr([]);
+        setLose(false);
+        setReset(false);
+        setWinner(false);
+        setMaxCount(0);
+    }
+
     return(
         <div>
-           <CardsRandom name={memoryArr} />
+            <div>
+            {winner ? <div>
+                        <div>You are winner</div>
+                        <button onClick={resetGame}>Reset</button>
+                    </div> : lose ? <div>You lose</div> : null}
+                <div className="count">
+                    <div>{count}</div>
+                    <div>{maxCount}</div>
+                </div>
+                <CardsRandom setValue={setValueInMemoryArr} />
+            </div>
         </div>
     )
 }

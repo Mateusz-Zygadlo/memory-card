@@ -6,8 +6,8 @@ const CardsRandom = (props) => {
 
     return(
         <div className="container">
-            {randomCards.map((item, i) => (
-                <div key={i} className={`${item} card`} onClick={(e)=>{console.log(e.target.className.split(' ')[0])}}>{item}</div>
+            {gameCards.map((item, i) => (
+                <div key={i} className={`${item} card`} onClick={(e)=>{props.setValue(e.target.className.split(' ')[0])}}>{item}</div>
             ))}
         </div>
     )
