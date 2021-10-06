@@ -34,31 +34,45 @@ const Card = () => {
             setCount(0)
             setMemoryArr([]);
             setLose(true);
+
+            if(count > maxCount){
+                setMaxCount(count - 1);
+            }
         }else{
             setCount(count + 1);
         }
 
-        console.log(memoryArr, count, lose);
+        console.log(memoryArr, count, maxCount);
     }, [memoryArr])
 
     return(
         <div>
-            {lose ? <h1>you lose</h1> : 
-                <div className="container">
-                    <div className="cardOne card" onClick={()=>{setMemoryArr(memoryArr.concat('CardOne'))}}>
-                        <h1>CardOne</h1>
-                    </div>
-                    <div className="cardTwo card" onClick={()=>{setMemoryArr(memoryArr.concat('CardTwo'))}}>
-                        <h1>CardTwo</h1>
-                    </div>
-                    <div className="cardThree card" onClick={()=>{setMemoryArr(memoryArr.concat('CardThree'))}}>
-                        <h1>CardThree</h1>
-                    </div>
-                    <div className="cardFour card" onClick={()=>{setMemoryArr(memoryArr.concat('CardFour'))}}>
-                        <h1>CardFour</h1>
-                    </div>
+            <div className="container">
+                <div className="cardOne card" onClick={(e)=>{setMemoryArr(memoryArr.concat(e.target.className.split(' ')[0]))}}>
+                    <h1>CardOne</h1>
                 </div>
-            }
+                <div className="cardTwo card" onClick={(e)=>{setMemoryArr(memoryArr.concat(e.target.className.split(' ')[0]))}}>
+                    <h1>CardTwo</h1>
+                </div>
+                <div className="cardThree card" onClick={(e)=>{setMemoryArr(memoryArr.concat(e.target.className.split(' ')[0]))}}>
+                    <h1>CardThree</h1>
+                </div>
+                <div className="cardFour card" onClick={(e)=>{setMemoryArr(memoryArr.concat(e.target.className.split(' ')[0]))}}>
+                    <h1>CardFour</h1>
+                </div>
+                <div className="cardFive card" onClick={(e)=>{setMemoryArr(memoryArr.concat(e.target.className.split(' ')[0]))}}>
+                    <h1>CardOne</h1>
+                </div>
+                <div className="cardSix card" onClick={(e)=>{setMemoryArr(memoryArr.concat(e.target.className.split(' ')[0]))}}>
+                    <h1>CardTwo</h1>
+                </div>
+                <div className="cardSeven card" onClick={(e)=>{setMemoryArr(memoryArr.concat(e.target.className.split(' ')[0]))}}>
+                    <h1>CardThree</h1>
+                </div>
+                <div className="cardEight card" onClick={(e)=>{setMemoryArr(memoryArr.concat(e.target.className.split(' ')[0]))}}>
+                    <h1>CardFour</h1>
+                </div>
+            </div>
         </div>
     )
 }
