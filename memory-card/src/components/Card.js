@@ -6,7 +6,6 @@ const Card = () => {
     const [memoryArr, setMemoryArr] = useState([]);
     const [maxCount, setMaxCount] = useState(0);
     const [count, setCount] = useState(-1);
-    const [lose, setLose] = useState(false);
     const [reset, setReset] = useState(false);
     const [winner, setWinner] = useState(false);
 
@@ -36,7 +35,6 @@ const Card = () => {
         if(isFilter()){
             setCount(-1)
             setMemoryArr([]);
-            setLose(true);
             setReset(true);
 
             if(count > maxCount){
@@ -45,8 +43,6 @@ const Card = () => {
         }else{
             setCount(count + 1);
         }
-
-        console.log(memoryArr, count, maxCount);
     }, [memoryArr])
 
     useEffect(() => {
@@ -56,6 +52,10 @@ const Card = () => {
 
         if(count == 8){
             setWinner(true);
+        }
+
+        if(winner){
+            setWinner(false);
         }
 
         return;
@@ -68,7 +68,6 @@ const Card = () => {
     const resetGame = () => {
         setCount(-1)
         setMemoryArr([]);
-        setLose(false);
         setReset(false);
         setWinner(false);
         setMaxCount(0);
@@ -80,10 +79,10 @@ const Card = () => {
             {winner ? <div className="winner">
                         <div>You are winner</div>
                         <button onClick={resetGame}>Reset</button>
-                    </div> : lose ? <div className="loser">You lose</div> : null}
+                    </div> : null}
                 <div className="count">
-                    <div>{count}</div>
-                    <div>{maxCount}</div>
+                    <div>Current count: [{count}]</div>
+                    <div>Best count: [{maxCount}]</div>
                 </div>
                 <CardsRandom setValue={setValueInMemoryArr} />
             </div>
