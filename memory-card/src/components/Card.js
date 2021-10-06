@@ -77,10 +77,10 @@ const Card = () => {
     return(
         <div>
             <div>
-            {winner ? <div>
+            {winner ? <div className="winner">
                         <div>You are winner</div>
                         <button onClick={resetGame}>Reset</button>
-                    </div> : lose ? <div>You lose</div> : null}
+                    </div> : lose ? <div className="loser">You lose</div> : null}
                 <div className="count">
                     <div>{count}</div>
                     <div>{maxCount}</div>
