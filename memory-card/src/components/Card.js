@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import CardsRandom from './CardsRandom';
 import '../App.css';
 
 const Card = () => {
     const [memoryArr, setMemoryArr] = useState([]);
     const [maxCount, setMaxCount] = useState(0);
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(-1);
     const [lose, setLose] = useState(false);
+    const [reset, setReset] = useState(false);
+    const [winner, setWinner] = useState(false);
 
     const isFilter = () => {
         const newArr = [];
@@ -31,13 +34,16 @@ const Card = () => {
 
     useEffect(() => {
         if(isFilter()){
-            setCount(0)
+            setCount(-1)
             setMemoryArr([]);
             setLose(true);
+            setReset(true);
 
             if(count > maxCount){
                 setMaxCount(count - 1);
             }
+
+
         }else{
             setCount(count + 1);
         }
@@ -45,34 +51,21 @@ const Card = () => {
         console.log(memoryArr, count, maxCount);
     }, [memoryArr])
 
+    useEffect(() => {
+        if(!reset || count > maxCount){
+            setMaxCount(count);
+        }
+
+        if(count == 8){
+            setWinner(true);
+        }
+
+        return;
+    }, [count])
+
     return(
         <div>
-            <div className="container">
-                <div className="cardOne card" onClick={(e)=>{setMemoryArr(memoryArr.concat(e.target.className.split(' ')[0]))}}>
-                    <h1>CardOne</h1>
-                </div>
-                <div className="cardTwo card" onClick={(e)=>{setMemoryArr(memoryArr.concat(e.target.className.split(' ')[0]))}}>
-                    <h1>CardTwo</h1>
-                </div>
-                <div className="cardThree card" onClick={(e)=>{setMemoryArr(memoryArr.concat(e.target.className.split(' ')[0]))}}>
-                    <h1>CardThree</h1>
-                </div>
-                <div className="cardFour card" onClick={(e)=>{setMemoryArr(memoryArr.concat(e.target.className.split(' ')[0]))}}>
-                    <h1>CardFour</h1>
-                </div>
-                <div className="cardFive card" onClick={(e)=>{setMemoryArr(memoryArr.concat(e.target.className.split(' ')[0]))}}>
-                    <h1>CardOne</h1>
-                </div>
-                <div className="cardSix card" onClick={(e)=>{setMemoryArr(memoryArr.concat(e.target.className.split(' ')[0]))}}>
-                    <h1>CardTwo</h1>
-                </div>
-                <div className="cardSeven card" onClick={(e)=>{setMemoryArr(memoryArr.concat(e.target.className.split(' ')[0]))}}>
-                    <h1>CardThree</h1>
-                </div>
-                <div className="cardEight card" onClick={(e)=>{setMemoryArr(memoryArr.concat(e.target.className.split(' ')[0]))}}>
-                    <h1>CardFour</h1>
-                </div>
-            </div>
+           <CardsRandom name={memoryArr} />
         </div>
     )
 }
